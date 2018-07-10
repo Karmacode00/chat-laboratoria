@@ -20,6 +20,6 @@ function login() {
     })
     .catch(()=>{
       console.log("Error de firebase > "+error.code);
-      console.log("Error de firebase, mensaje > "+error.mensaje);
+      console.log("Error de firebase, mensaje > "+error.message);
     });
 }
