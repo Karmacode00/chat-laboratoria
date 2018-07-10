@@ -1,3 +1,18 @@
+window.onload = () =>{
+  firebase.auth().onAuthStateChanged((user)=>{
+    if(user) {
+      // Si estamos logueados
+      loggedOut.style.display = "none";
+      loggedIn.style.display = "block";
+      console.log("User > "+JSON.stringify(user));
+    }else{
+      // No estamos logueados
+      loggedOut.style.display = "block";
+      loggedIn.style.display = "none";
+    }
+  });
+}
+
 function logInOrRegister() {
   const emailValue = email.value;
   const passwordValue = password.value;
@@ -22,4 +37,12 @@ function login() {
       console.log("Error de firebase > "+error.code);
       console.log("Error de firebase, mensaje > "+error.message);
     });
+}
+
+function logout() {
+  firebase.auth().signOut()
+    .then(()=>{
+      console.log("Chao");
+    })
+    .catch();
 }
